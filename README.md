@@ -1,4 +1,5 @@
 # JobTechProject
+
 Data visualization with job market data
 
 Description:
@@ -11,9 +12,6 @@ This project is required to analyse data and visualize with suitable graph.
 4. Adding some features at the chart which is zoomable.
 5. The site is mobile reponsive.
 
-Installation:
-no installation is needed.
-
 Usage:
 
 Downloaded the file. Then, folder contain two file which is index.html and main.css.
@@ -23,3 +21,14 @@ Reference:
 - https://angularjs.org/
 - https://www.highcharts.com/
 - https://www.heroku.com/
+
+
+Notes
+- These file is used for host Angular application on Heroku
+```
+- folder > node_modules
+- Procfile
+- package-lock.json
+- package.json
+- server.js
+```
