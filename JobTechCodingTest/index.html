@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" ng-app="myModule">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="main.css">
+
+    <!-- AngularJS CDN -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+    <!-- HighCharts -->
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+
+
+    <title>Project - Chart</title>
+
+  </head>
+  <body ng-controller="myController">
+    
+    <nav class="navbar sticky-top navbar-dark bg-dark justify-content-center">
+      <a href="#" class="navbar-brand">JobTech Project</a>
+    </nav>
+
+    <div class="chart-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <!-- Make a paragraph stand out by adding .lead. -->
+      <h1 class="lead">AngularJS+Highcharts</h1>
+      <p class="lead">Data visualization with job market data</p>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <hc-chart options="chartOptions">Placeholder for generic chart</hc-chart>
+            <p class="text-center"><strong>Features:</strong> Making Graphs Zoomable<br>
+              Click and drag over an area on chart, it will begin selecting an area of the chart.</p>
+            <br>
+            <h6><strong>Significance:</strong></h6>
+            <p>The line chart illustrates the number of job demands required or posted for each industry from September 2017 to January 2018.
+            It can be seen that Banking & Finance industry recorded the highest job demands while Marine industry is the lowest.</p>
+        </div>
+        <div class="col-md-6">
+          <hc-pie-chart title="Demand From Industries In The Job Market (%)" data="pieData">Placeholder for pie chart</hc-pie-chart>
+            <br>
+            <h6><strong>Significance:</strong></h6>
+            <p>This pie chart shows the percentage value of job demands required by each industry in the job market. Banking & Finance recorded the highest market share followed by Infocomm Technologies. It can be objectively said that many people will be employed in these two industries. This pie chart also could be taken as a reference for future employess to outline their career path.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        angular.module('myModule', [])
+            // Directive for generic chart, pass in chart options
+            .directive('hcChart', function () {
+                return {
+                    restrict: 'E',
+                    template: '<div></div>',
+                    
+                    replace:true,
+                    scope: {
+                        options: '='
+                    },
+                    link: function (scope, element) {
+                        Highcharts.chart(element[0], scope.options);
+                    }
+
+                };
+            })
+            // Directive for pie charts, pass in title and data only    
+            .directive('hcPieChart', function () {
+                return {
+                    restrict: 'E',
+                    template: '<div></div>',
+                    replace:true,
+                    scope: {
+                        title: '@',
+                        data: '='
+                    },
+                    link: function (scope, element) {
+                        Highcharts.chart(element[0], {
+                            chart: {
+                                type: 'pie'
+                            },
+                            title: {
+                                text: scope.title
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: true,
+                                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                    }
+                                }
+                            },
+                            series: [{
+                                data: scope.data
+                            }]
+                        });
+                    }
+                };
+            })
+            .controller('myController', function ($scope) {
+                
+                //options for first chart
+                $scope.chartOptions = {
+                  // subtitle:{
+                 //     text:'demand'
+                       
+                  //  },
+                   chart:{
+                      zoomType:'xy'
+                                             
+                   },
+                    title: {
+                        text: 'Demand Based On Industry'
+                    },
+                    xAxis: {
+                      tickInterval:1,
+                        categories: ['September-17', 'October-17', 'November-17', 'December-17', 'January-18']
+                    },
+
+                    yAxis: {
+                      title: {
+                        text: 'Job Demand'
+                      }
+                  },
+
+                    plotOptions: {
+                      line: {
+                    dataLabels: {
+                      enabled: true
+                    }            
+                }
+                    },
+                
+                    // legend: {
+                    //  layout: 'vertical',
+                    //  align: 'right',
+                    //  verticalAlign: 'top',
+                      
+                    //  x:-10,
+                    //  y:100,
+                    //  borderWidth:0
+                    // },
+                    legend: {
+                      
+                      align: 'center',
+                      verticalAlign: 'bottom',
+                      
+                      x:0,
+                      y:0
+                      
+                    },
+
+                    series: 
+                    [
+                      {
+                        name:'Banking & Finance',
+                          data: [8, 4920, 6247, 5043, 1]               
+                      },
+                      {
+                      name: 'Biotech & pharmaceutical',
+                      data: [0, 176, 149, 158, 1]
+                  },
+                  {
+                      name: 'Electronics & Semiconductor',
+                      data: [3, 843, 886, 1109, 1]
+                  }, 
+                  {
+                      name: 'Energy & Chemicals',
+                      data: [1, 401, 459, 442, 0]
+                  },
+                  {
+                      name: 'Goverment',
+                      data: [7, 728, 656, 905, 1]
+                  },
+                  {
+                      name: 'Healthcare',
+                      data: [1, 1077, 1244, 1131, 3]
+                  },
+                  {
+                      name: 'Infocomm Technologies',
+                      data: [3, 1902, 5413, 1793, 2]
+                  },
+                  {
+                      name: 'Logistics',
+                      data: [6, 660, 672, 788, 0]
+                  },
+                  {
+                      name: 'Marine',
+                      data: [0, 117, 118, 118, 0]
+                  }
+                    ]
+                };
+
+                // Data for pie chart
+                $scope.pieData = [{
+                        name: "Banking & Finance",
+                        y: 8.5
+                    }, {
+                        name: "Biotech & Pharmaceutical",
+                        y: 0.3,
+                        sliced: true,
+                        selected: true
+                    }, {
+                        name: "Electronics & Semiconductor",
+                        y: 1.5
+                    }, {
+                        name: "Energy & Chemicals",
+                        y: 0.7
+                    }, {
+                        name: "Government",
+                        y: 1.2
+                    }, {
+                        name: "Healthcare",
+                        y: 1.8
+                    }, {
+                        name: "Infocomm Technologies",
+                        y: 4.8
+                    },{
+                        name: "Logistics",
+                        y: 1.1
+                    },{
+                        name: "Marine",
+                        y: 0.2
+                }]
+            });
+    </script>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
