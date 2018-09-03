@@ -2,7 +2,7 @@
 
 Data visualization with job market data
 
-Description:
+**Description:**
 
 This project is required to analyse data and visualize with suitable graph.
 
@@ -12,18 +12,20 @@ This project is required to analyse data and visualize with suitable graph.
 4. Adding some features at the chart which is zoomable.
 5. The site is mobile reponsive.
 
-Usage:
+**Usage:**
 
 Downloaded the file. Then, folder contain two file which is index.html and main.css.
 Right Click at index.html and choose open with "Google Chrome" or any browser you have installed in your machine.
 
-Reference:
+---
+**Reference:**
 - https://angularjs.org/
 - https://www.highcharts.com/
 - https://www.heroku.com/
+- https://nodejs.org/en/
 
-
-Notes
+---
+**Notes**
 - These file is used for host Angular application on Heroku
 ```
 - folder > node_modules
@@ -32,3 +34,6 @@ Notes
 - package.json
 - server.js
 ```
+- Package.json holds metadata about the app.
+- Dependency : a must have it in order for the application to work.
+- Using express : a Node.js framework
