@@ -1,4 +1,4 @@
-# JobTechProject
+# JobTech Project
 
 Data visualization with job market data
 
@@ -14,7 +14,7 @@ This project is required to analyse data and visualize with suitable graph.
 
 **Usage:**
 
-Downloaded the file. Then, folder contain two file which is index.html and main.css.
+Download the file. Then, folder contain two file which is index.html and main.css.
 Right Click at index.html and choose open with "Google Chrome" or any browser you have installed in your machine.
 
 ---
