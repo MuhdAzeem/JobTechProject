@@ -27,6 +27,7 @@ Right Click at index.html and choose open with "Google Chrome" or any browser yo
 ---
 **Notes**
 - These file is used for host Angular application on Heroku
+- live now : https://jobtechcodingtest.herokuapp.com/
 ```
 - folder > node_modules
 - Procfile
