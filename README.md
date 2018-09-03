@@ -3,14 +3,14 @@
 Data visualization with job market data
 
 **Description:**
-This project is required to analyse data and visualize with suitable graph.
+This project is required to analyze job market data and visualize it with suitable chart using front-end framework.
 
 1. Implemented data visualization using Highcharts library.
 2. Using AngularJS as front-end framework. With AngularJS, i can use HTML as the template language. Thus, it shorten the development time.
 3. This project also deployed on Heroku. This is the link(https://jobtechcodingtest.herokuapp.com/).
-4. Adding some features at the chart which is zoomable.
-5. The site is mobile reponsive.
+4. This site is mobile reponsive.
 
+---
 **Usage:**
 1. Download the file. 
 2. Then, folder contain many files. Just choose index.html.
